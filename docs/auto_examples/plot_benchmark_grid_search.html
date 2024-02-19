@@ -380,11 +380,10 @@ document.write(`
 <li class="toctree-l1 has-children"><a class="reference internal" href="../auto_tutorials/index.html">Getting Started</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../auto_tutorials/4_adding_a_dataset.html">Tutorial 4: Creating a dataset class</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../auto_tutorials/noplot_tutorial_5_build_a_custom_dataset.html">Tutorial 5: Creating a dataset class</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../auto_tutorials/plot_Getting_Started.html">Getting Started</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../auto_tutorials/plot_Getting_Started.html">Tutorial 0: Getting Started</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../auto_tutorials/tutorial_1_simple_example_motor_imagery.html">Tutorial 1: Simple Motor Imagery</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../auto_tutorials/tutorial_2_using_mulitple_datasets.html">Tutorial 2: Using multiple datasets</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../auto_tutorials/tutorial_3_benchmarking_multiple_pipelines.html">Basic tutorial on how to use MOABB.</a></li>
-
+<li class="toctree-l2"><a class="reference internal" href="../auto_tutorials/tutorial_3_benchmarking_multiple_pipelines.html">Tutorial 3: Benchmarking multiple pipelines</a></li>
 </ul>
 </li>
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="index.html">Examples</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
@@ -676,8 +675,32 @@ folder, and the analysis &amp; figures are saved in the <code class="docutils li
   raw = read_raw_cnt(fname, preload=True, eog=[&quot;VEOU&quot;, &quot;VEOL&quot;])
 /home/runner/work/moabb/moabb/moabb/datasets/Zhou2016.py:111: RuntimeWarning: Could not define the number of bytes automatically. Defaulting to 2.
   raw = read_raw_cnt(fname, preload=True, eog=[&quot;VEOU&quot;, &quot;VEOL&quot;])
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:273: UserWarning: warnEpochs &lt;Epochs |  60 events (all good), 0 – 5 s, baseline off, ~8.0 MB, data loaded,
+ &#39;left_hand&#39;: 30
+ &#39;right_hand&#39;: 30&gt;
+  warn(f&quot;warnEpochs {epochs}&quot;)
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:273: UserWarning: warnEpochs &lt;Epochs |  59 events (all good), 0 – 5 s, baseline off, ~7.9 MB, data loaded,
+ &#39;left_hand&#39;: 30
+ &#39;right_hand&#39;: 29&gt;
+  warn(f&quot;warnEpochs {epochs}&quot;)
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:273: UserWarning: warnEpochs &lt;Epochs |  50 events (all good), 0 – 5 s, baseline off, ~6.7 MB, data loaded,
+ &#39;left_hand&#39;: 25
+ &#39;right_hand&#39;: 25&gt;
+  warn(f&quot;warnEpochs {epochs}&quot;)
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:273: UserWarning: warnEpochs &lt;Epochs |  50 events (all good), 0 – 5 s, baseline off, ~6.7 MB, data loaded,
+ &#39;left_hand&#39;: 25
+ &#39;right_hand&#39;: 25&gt;
+  warn(f&quot;warnEpochs {epochs}&quot;)
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:273: UserWarning: warnEpochs &lt;Epochs |  50 events (all good), 0 – 5 s, baseline off, ~6.7 MB, data loaded,
+ &#39;left_hand&#39;: 25
+ &#39;right_hand&#39;: 25&gt;
+  warn(f&quot;warnEpochs {epochs}&quot;)
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:273: UserWarning: warnEpochs &lt;Epochs |  50 events (all good), 0 – 5 s, baseline off, ~6.7 MB, data loaded,
+ &#39;left_hand&#39;: 25
+ &#39;right_hand&#39;: 25&gt;
+  warn(f&quot;warnEpochs {epochs}&quot;)
 
-Zhou2016-WithinSession:  25%|##5       | 1/4 [00:41&lt;02:04, 41.65s/it]/home/runner/work/moabb/moabb/moabb/datasets/Zhou2016.py:111: RuntimeWarning: Could not define the number of bytes automatically. Defaulting to 2.
+Zhou2016-WithinSession:  25%|##5       | 1/4 [00:25&lt;01:15, 25.15s/it]/home/runner/work/moabb/moabb/moabb/datasets/Zhou2016.py:111: RuntimeWarning: Could not define the number of bytes automatically. Defaulting to 2.
   raw = read_raw_cnt(fname, preload=True, eog=[&quot;VEOU&quot;, &quot;VEOL&quot;])
 /home/runner/work/moabb/moabb/moabb/datasets/Zhou2016.py:111: RuntimeWarning: Could not define the number of bytes automatically. Defaulting to 2.
   raw = read_raw_cnt(fname, preload=True, eog=[&quot;VEOU&quot;, &quot;VEOL&quot;])
@@ -697,8 +720,32 @@ Zhou2016-WithinSession:  25%|##5       | 1/4 [00:41&lt;02:04, 41.65s/it]/home/ru
   raw = read_raw_cnt(fname, preload=True, eog=[&quot;VEOU&quot;, &quot;VEOL&quot;])
 /home/runner/work/moabb/moabb/moabb/datasets/Zhou2016.py:111: RuntimeWarning: Could not define the number of bytes automatically. Defaulting to 2.
   raw = read_raw_cnt(fname, preload=True, eog=[&quot;VEOU&quot;, &quot;VEOL&quot;])
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:273: UserWarning: warnEpochs &lt;Epochs |  50 events (all good), 0 – 5 s, baseline off, ~6.7 MB, data loaded,
+ &#39;left_hand&#39;: 25
+ &#39;right_hand&#39;: 25&gt;
+  warn(f&quot;warnEpochs {epochs}&quot;)
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:273: UserWarning: warnEpochs &lt;Epochs |  50 events (all good), 0 – 5 s, baseline off, ~6.7 MB, data loaded,
+ &#39;left_hand&#39;: 25
+ &#39;right_hand&#39;: 25&gt;
+  warn(f&quot;warnEpochs {epochs}&quot;)
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:273: UserWarning: warnEpochs &lt;Epochs |  50 events (all good), 0 – 5 s, baseline off, ~6.7 MB, data loaded,
+ &#39;left_hand&#39;: 25
+ &#39;right_hand&#39;: 25&gt;
+  warn(f&quot;warnEpochs {epochs}&quot;)
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:273: UserWarning: warnEpochs &lt;Epochs |  40 events (all good), 0 – 5 s, baseline off, ~5.4 MB, data loaded,
+ &#39;left_hand&#39;: 20
+ &#39;right_hand&#39;: 20&gt;
+  warn(f&quot;warnEpochs {epochs}&quot;)
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:273: UserWarning: warnEpochs &lt;Epochs |  50 events (all good), 0 – 5 s, baseline off, ~6.7 MB, data loaded,
+ &#39;left_hand&#39;: 25
+ &#39;right_hand&#39;: 25&gt;
+  warn(f&quot;warnEpochs {epochs}&quot;)
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:273: UserWarning: warnEpochs &lt;Epochs |  50 events (all good), 0 – 5 s, baseline off, ~6.7 MB, data loaded,
+ &#39;left_hand&#39;: 25
+ &#39;right_hand&#39;: 25&gt;
+  warn(f&quot;warnEpochs {epochs}&quot;)
 
-Zhou2016-WithinSession:  50%|#####     | 2/4 [01:20&lt;01:19, 39.88s/it]/home/runner/work/moabb/moabb/moabb/datasets/Zhou2016.py:111: RuntimeWarning: Could not define the number of bytes automatically. Defaulting to 2.
+Zhou2016-WithinSession:  50%|#####     | 2/4 [00:47&lt;00:46, 23.41s/it]/home/runner/work/moabb/moabb/moabb/datasets/Zhou2016.py:111: RuntimeWarning: Could not define the number of bytes automatically. Defaulting to 2.
   raw = read_raw_cnt(fname, preload=True, eog=[&quot;VEOU&quot;, &quot;VEOL&quot;])
 /home/runner/work/moabb/moabb/moabb/datasets/Zhou2016.py:111: RuntimeWarning: Could not define the number of bytes automatically. Defaulting to 2.
   raw = read_raw_cnt(fname, preload=True, eog=[&quot;VEOU&quot;, &quot;VEOL&quot;])
@@ -714,8 +761,32 @@ Zhou2016-WithinSession:  50%|#####     | 2/4 [01:20&lt;01:19, 39.88s/it]/home/ru
   raw = read_raw_cnt(fname, preload=True, eog=[&quot;VEOU&quot;, &quot;VEOL&quot;])
 /home/runner/work/moabb/moabb/moabb/datasets/Zhou2016.py:111: RuntimeWarning: Could not define the number of bytes automatically. Defaulting to 2.
   raw = read_raw_cnt(fname, preload=True, eog=[&quot;VEOU&quot;, &quot;VEOL&quot;])
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:273: UserWarning: warnEpochs &lt;Epochs |  50 events (all good), 0 – 5 s, baseline off, ~6.7 MB, data loaded,
+ &#39;left_hand&#39;: 25
+ &#39;right_hand&#39;: 25&gt;
+  warn(f&quot;warnEpochs {epochs}&quot;)
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:273: UserWarning: warnEpochs &lt;Epochs |  50 events (all good), 0 – 5 s, baseline off, ~6.7 MB, data loaded,
+ &#39;left_hand&#39;: 25
+ &#39;right_hand&#39;: 25&gt;
+  warn(f&quot;warnEpochs {epochs}&quot;)
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:273: UserWarning: warnEpochs &lt;Epochs |  50 events (all good), 0 – 5 s, baseline off, ~6.7 MB, data loaded,
+ &#39;left_hand&#39;: 25
+ &#39;right_hand&#39;: 25&gt;
+  warn(f&quot;warnEpochs {epochs}&quot;)
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:273: UserWarning: warnEpochs &lt;Epochs |  50 events (all good), 0 – 5 s, baseline off, ~6.7 MB, data loaded,
+ &#39;left_hand&#39;: 25
+ &#39;right_hand&#39;: 25&gt;
+  warn(f&quot;warnEpochs {epochs}&quot;)
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:273: UserWarning: warnEpochs &lt;Epochs |  50 events (all good), 0 – 5 s, baseline off, ~6.7 MB, data loaded,
+ &#39;left_hand&#39;: 25
+ &#39;right_hand&#39;: 25&gt;
+  warn(f&quot;warnEpochs {epochs}&quot;)
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:273: UserWarning: warnEpochs &lt;Epochs |  50 events (all good), 0 – 5 s, baseline off, ~6.7 MB, data loaded,
+ &#39;left_hand&#39;: 25
+ &#39;right_hand&#39;: 25&gt;
+  warn(f&quot;warnEpochs {epochs}&quot;)
 
-Zhou2016-WithinSession:  75%|#######5  | 3/4 [02:00&lt;00:39, 39.90s/it]/home/runner/work/moabb/moabb/moabb/datasets/Zhou2016.py:111: RuntimeWarning: Could not define the number of bytes automatically. Defaulting to 2.
+Zhou2016-WithinSession:  75%|#######5  | 3/4 [01:09&lt;00:22, 22.97s/it]/home/runner/work/moabb/moabb/moabb/datasets/Zhou2016.py:111: RuntimeWarning: Could not define the number of bytes automatically. Defaulting to 2.
   raw = read_raw_cnt(fname, preload=True, eog=[&quot;VEOU&quot;, &quot;VEOL&quot;])
 /home/runner/work/moabb/moabb/moabb/datasets/Zhou2016.py:111: RuntimeWarning: Could not define the number of bytes automatically. Defaulting to 2.
   raw = read_raw_cnt(fname, preload=True, eog=[&quot;VEOU&quot;, &quot;VEOL&quot;])
@@ -731,13 +802,37 @@ Zhou2016-WithinSession:  75%|#######5  | 3/4 [02:00&lt;00:39, 39.90s/it]/home/ru
   raw = read_raw_cnt(fname, preload=True, eog=[&quot;VEOU&quot;, &quot;VEOL&quot;])
 /home/runner/work/moabb/moabb/moabb/datasets/Zhou2016.py:111: RuntimeWarning: Could not define the number of bytes automatically. Defaulting to 2.
   raw = read_raw_cnt(fname, preload=True, eog=[&quot;VEOU&quot;, &quot;VEOL&quot;])
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:273: UserWarning: warnEpochs &lt;Epochs |  40 events (all good), 0 – 5 s, baseline off, ~5.4 MB, data loaded,
+ &#39;left_hand&#39;: 20
+ &#39;right_hand&#39;: 20&gt;
+  warn(f&quot;warnEpochs {epochs}&quot;)
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:273: UserWarning: warnEpochs &lt;Epochs |  50 events (all good), 0 – 5 s, baseline off, ~6.7 MB, data loaded,
+ &#39;left_hand&#39;: 25
+ &#39;right_hand&#39;: 25&gt;
+  warn(f&quot;warnEpochs {epochs}&quot;)
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:273: UserWarning: warnEpochs &lt;Epochs |  50 events (all good), 0 – 5 s, baseline off, ~6.7 MB, data loaded,
+ &#39;left_hand&#39;: 25
+ &#39;right_hand&#39;: 25&gt;
+  warn(f&quot;warnEpochs {epochs}&quot;)
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:273: UserWarning: warnEpochs &lt;Epochs |  50 events (all good), 0 – 5 s, baseline off, ~6.7 MB, data loaded,
+ &#39;left_hand&#39;: 25
+ &#39;right_hand&#39;: 25&gt;
+  warn(f&quot;warnEpochs {epochs}&quot;)
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:273: UserWarning: warnEpochs &lt;Epochs |  50 events (all good), 0 – 5 s, baseline off, ~6.7 MB, data loaded,
+ &#39;left_hand&#39;: 25
+ &#39;right_hand&#39;: 25&gt;
+  warn(f&quot;warnEpochs {epochs}&quot;)
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:273: UserWarning: warnEpochs &lt;Epochs |  50 events (all good), 0 – 5 s, baseline off, ~6.7 MB, data loaded,
+ &#39;left_hand&#39;: 25
+ &#39;right_hand&#39;: 25&gt;
+  warn(f&quot;warnEpochs {epochs}&quot;)
 
-Zhou2016-WithinSession: 100%|##########| 4/4 [02:41&lt;00:00, 40.45s/it]
-Zhou2016-WithinSession: 100%|##########| 4/4 [02:41&lt;00:00, 40.38s/it]
+Zhou2016-WithinSession: 100%|##########| 4/4 [01:31&lt;00:00, 22.59s/it]
+Zhou2016-WithinSession: 100%|##########| 4/4 [01:31&lt;00:00, 22.95s/it]
     dataset     evaluation   pipeline  avg score
-0  Zhou2016  WithinSession  CSP + LDA   0.937954
-1  Zhou2016  WithinSession         EN   0.943619
-2  Zhou2016  WithinSession    EN Grid   0.943531
+0  Zhou2016  WithinSession    EN Grid   0.943531
+1  Zhou2016  WithinSession  CSP + LDA   0.937954
+2  Zhou2016  WithinSession         EN   0.943619
 </pre></div>
 </div>
 <p>Benchmark prints a summary of the results. Detailed results are saved in a
@@ -751,8 +846,8 @@ are saved in the <code class="docutils literal notranslate"><span class="pre">be
   sea.stripplot(
 </pre></div>
 </div>
-<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 2 minutes  43.730 seconds)</p>
-<p><strong>Estimated memory usage:</strong>  151 MB</p>
+<p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 1 minutes  33.344 seconds)</p>
+<p><strong>Estimated memory usage:</strong>  166 MB</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-plot-benchmark-grid-search-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/b129d24bc810ae3a961d5bdcb7413828/plot_benchmark_grid_search.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_benchmark_grid_search.py</span></code></a></p>
