@@ -7,9 +7,9 @@
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
-
-    <title>Cross-Subject SSVEP &#8212; moabb 1.0.0 documentation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <link rel="moabb icon" sizes="180x180" href="../_static/moabb_logo.png" type="image/png">
+    <title>Cross-Subject SSVEP &#8212; moabb 1.1.1-dev documentation</title>
   
   
   
@@ -30,12 +30,14 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="../_static/sg_gallery-rendered-html.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/style.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-2.0.4/b-3.0.2/b-html5-3.0.2/datatables.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
@@ -47,6 +49,8 @@
     <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/sphinx_highlight.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
     <script src="../_static/design-tabs.js"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-5WJBKDMSTE"></script>
     <script>
@@ -56,6 +60,8 @@
                 gtag('config', 'G-5WJBKDMSTE');
             </script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'auto_examples/plot_cross_subject_ssvep';</script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.datatables.net/v/dt/dt-2.0.4/b-3.0.2/b-html5-3.0.2/datatables.min.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Cache on disk intermediate data processing states" href="plot_disk_cache.html" />
@@ -103,6 +109,21 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+
+<script>
+document.write(`<div class="bd-header-announcement"></div>`);
+fetch("https://raw.githubusercontent.com/NeuroTechX/moabb/develop/docs/source/_templates/custom-template.html")
+  .then(res => {return res.text();})
+  .then(data => {
+    div = document.querySelector(".bd-header-announcement");
+    div.classList.add(...["bd-header-announcement", "container-fluid"]);
+    div.innerHTML = `<div class="bd-header-announcement__content">${data}</div>`;
+  })
+  .catch(error => {
+    console.log("[PST]: Failed to load announcement at: https://raw.githubusercontent.com/NeuroTechX/moabb/develop/docs/source/_templates/custom-template.html");
+  });
+</script>
   
     <nav class="bd-header navbar navbar-expand-lg bd-navbar">
 <div class="bd-header__inner bd-page-width">
@@ -146,6 +167,20 @@
   <ul class="bd-navbar-elements navbar-nav">
     
                     <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../paper_results.html">
+                        The largest EEG benchmark
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../dataset_summary.html">
+                        Datasets
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
                       <a class="nav-link nav-internal" href="../install/install.html">
                         Install
                       </a>
@@ -165,10 +200,15 @@
                       </a>
                     </li>
                 
-
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
                     <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../dataset_summary.html">
-                        Datasets
+                      <a class="nav-link nav-internal" href="index.html">
+                        Gallery
                       </a>
                     </li>
                 
@@ -179,29 +219,17 @@
                       </a>
                     </li>
                 
-            <div class="nav-item dropdown">
-                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    More
-                </button>
-                <div class="dropdown-menu">
-                    
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../api.html">
-                        API
-                      </a>
-                    </li>
-                
 
                     <li class="nav-item">
-                      <a class="nav-link nav-internal" href="index.html">
-                        Gallery
+                      <a class="nav-link nav-internal" href="../api.html">
+                        API reference
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../whats_new.html">
-                        What's new
+                        Release notes
                       </a>
                     </li>
                 
@@ -286,6 +314,20 @@ document.write(`
   <ul class="bd-navbar-elements navbar-nav">
     
                     <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../paper_results.html">
+                        The largest EEG benchmark
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="../dataset_summary.html">
+                        Datasets
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
                       <a class="nav-link nav-internal" href="../install/install.html">
                         Install
                       </a>
@@ -305,10 +347,15 @@ document.write(`
                       </a>
                     </li>
                 
-
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
                     <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../dataset_summary.html">
-                        Datasets
+                      <a class="nav-link nav-internal" href="index.html">
+                        Gallery
                       </a>
                     </li>
                 
@@ -319,29 +366,17 @@ document.write(`
                       </a>
                     </li>
                 
-            <div class="nav-item dropdown">
-                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    More
-                </button>
-                <div class="dropdown-menu">
-                    
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="../api.html">
-                        API
-                      </a>
-                    </li>
-                
 
                     <li class="nav-item">
-                      <a class="nav-link nav-internal" href="index.html">
-                        Gallery
+                      <a class="nav-link nav-internal" href="../api.html">
+                        API reference
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="../whats_new.html">
-                        What's new
+                        Release notes
                       </a>
                     </li>
                 
@@ -393,6 +428,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="noplot_bids_conversion.html">Convert a MOABB dataset to BIDS</a></li>
 <li class="toctree-l2"><a class="reference internal" href="noplot_phmd_ml_spectrum.html">Spectral analysis of the trials</a></li>
 <li class="toctree-l2"><a class="reference internal" href="noplot_vr_pc_p300_different_epoch_size.html">Changing epoch size in P300 VR dataset</a></li>
+<li class="toctree-l2"><a class="reference internal" href="plot_Hinss2021_classification.html">Hinss2021 classification example</a></li>
 <li class="toctree-l2"><a class="reference internal" href="plot_benchmark.html">Examples of how to use MOABB to benchmark pipelines.</a></li>
 
 <li class="toctree-l2"><a class="reference internal" href="plot_benchmark_DL.html">Benchmarking on MOABB with Tensorflow deep net architectures</a></li>
@@ -429,6 +465,8 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../generated/moabb.datasets.Shin2017B.html">moabb.datasets.Shin2017B</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../generated/moabb.datasets.Weibo2014.html">moabb.datasets.Weibo2014</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../generated/moabb.datasets.Zhou2016.html">moabb.datasets.Zhou2016</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../generated/moabb.datasets.Stieger2021.html">moabb.datasets.Stieger2021</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../generated/moabb.datasets.Liu2024.html">moabb.datasets.Liu2024</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../generated/moabb.datasets.BI2012.html">moabb.datasets.BI2012</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../generated/moabb.datasets.BI2013a.html">moabb.datasets.BI2013a</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../generated/moabb.datasets.BI2014a.html">moabb.datasets.BI2014a</a></li>
@@ -452,8 +490,15 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../generated/moabb.datasets.MAMEM2.html">moabb.datasets.MAMEM2</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../generated/moabb.datasets.MAMEM3.html">moabb.datasets.MAMEM3</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../generated/moabb.datasets.Lee2019_SSVEP.html">moabb.datasets.Lee2019_SSVEP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../generated/moabb.datasets.Thielen2015.html">moabb.datasets.Thielen2015</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../generated/moabb.datasets.Thielen2021.html">moabb.datasets.Thielen2021</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../generated/moabb.datasets.CastillosBurstVEP40.html">moabb.datasets.CastillosBurstVEP40</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../generated/moabb.datasets.CastillosBurstVEP100.html">moabb.datasets.CastillosBurstVEP100</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../generated/moabb.datasets.CastillosCVEP40.html">moabb.datasets.CastillosCVEP40</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../generated/moabb.datasets.CastillosCVEP100.html">moabb.datasets.CastillosCVEP100</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../generated/moabb.datasets.Cattan2019_PHMD.html">moabb.datasets.Cattan2019_PHMD</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../generated/moabb.datasets.Hinss2021.html">moabb.datasets.Hinss2021</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../generated/moabb.datasets.Rodrigues2017.html">moabb.datasets.Rodrigues2017</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../generated/moabb.datasets.base.BaseDataset.html">moabb.datasets.base.BaseDataset</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../generated/moabb.datasets.base.CacheConfig.html">moabb.datasets.base.CacheConfig</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../generated/moabb.datasets.fake.FakeDataset.html">moabb.datasets.fake.FakeDataset</a></li>
@@ -487,6 +532,7 @@ document.write(`
 <li class="toctree-l2"><a class="reference internal" href="../generated/moabb.paradigms.FilterBankSSVEP.html">moabb.paradigms.FilterBankSSVEP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../generated/moabb.paradigms.CVEP.html">moabb.paradigms.CVEP</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../generated/moabb.paradigms.FilterBankCVEP.html">moabb.paradigms.FilterBankCVEP</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../generated/moabb.paradigms.RestingStateToP300Adapter.html">moabb.paradigms.RestingStateToP300Adapter</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../generated/moabb.paradigms.FixedIntervalWindowsProcessing.html">moabb.paradigms.FixedIntervalWindowsProcessing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../generated/moabb.paradigms.FilterBankFixedIntervalWindowsProcessing.html">moabb.paradigms.FilterBankFixedIntervalWindowsProcessing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../generated/moabb.paradigms.motor_imagery.BaseMotorImagery.html">moabb.paradigms.motor_imagery.BaseMotorImagery</a></li>
@@ -720,90 +766,81 @@ be overwritten if necessary.</p>
 <span class="n">results</span> <span class="o">=</span> <a href="../generated/moabb.evaluations.base.BaseEvaluation.html#moabb.evaluations.base.BaseEvaluation.process" title="moabb.evaluations.base.BaseEvaluation.process" class="sphx-glr-backref-module-moabb-evaluations-base sphx-glr-backref-type-py-method"><span class="n">evaluation</span><span class="o">.</span><span class="n">process</span></a><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">pipelines</span></a><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/runner/work/moabb/moabb/.venv/lib/python3.9/site-packages/urllib3/connectionpool.py:1061: InsecureRequestWarning: Unverified HTTPS request is being made to host &#39;zenodo.org&#39;. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/runner/work/moabb/moabb/.venv/lib/python3.9/site-packages/urllib3/connectionpool.py:1064: InsecureRequestWarning: Unverified HTTPS request is being made to host &#39;zenodo.org&#39;. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
   warnings.warn(
-/home/runner/work/moabb/moabb/.venv/lib/python3.9/site-packages/urllib3/connectionpool.py:1061: InsecureRequestWarning: Unverified HTTPS request is being made to host &#39;zenodo.org&#39;. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+/home/runner/work/moabb/moabb/.venv/lib/python3.9/site-packages/urllib3/connectionpool.py:1064: InsecureRequestWarning: Unverified HTTPS request is being made to host &#39;zenodo.org&#39;. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
   warnings.warn(
 
   0%|                                              | 0.00/2.06M [00:00&lt;?, ?B/s]
-  1%|▏                                    | 12.3k/2.06M [00:00&lt;00:26, 76.4kB/s]
-  2%|▊                                     | 41.0k/2.06M [00:00&lt;00:14, 136kB/s]
-  4%|█▌                                    | 81.9k/2.06M [00:00&lt;00:10, 189kB/s]
-  9%|███▌                                   | 188k/2.06M [00:00&lt;00:04, 374kB/s]
- 18%|███████▏                               | 380k/2.06M [00:00&lt;00:02, 666kB/s]
- 38%|██████████████▌                       | 788k/2.06M [00:00&lt;00:00, 1.30MB/s]
- 79%|█████████████████████████████▏       | 1.62M/2.06M [00:01&lt;00:00, 2.55MB/s]
+  1%|▎                                     | 14.3k/2.06M [00:00&lt;00:16, 124kB/s]
+  5%|██▏                                    | 113k/2.06M [00:00&lt;00:04, 399kB/s]
+ 25%|█████████▋                            | 523k/2.06M [00:00&lt;00:01, 1.28MB/s]
+ 67%|████████████████████████▋            | 1.37M/2.06M [00:00&lt;00:00, 3.25MB/s]
   0%|                                              | 0.00/2.06M [00:00&lt;?, ?B/s]
-100%|█████████████████████████████████████| 2.06M/2.06M [00:00&lt;00:00, 11.4GB/s]
-/home/runner/work/moabb/moabb/.venv/lib/python3.9/site-packages/urllib3/connectionpool.py:1061: InsecureRequestWarning: Unverified HTTPS request is being made to host &#39;zenodo.org&#39;. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+100%|█████████████████████████████████████| 2.06M/2.06M [00:00&lt;00:00, 10.5GB/s]
+/home/runner/work/moabb/moabb/.venv/lib/python3.9/site-packages/urllib3/connectionpool.py:1064: InsecureRequestWarning: Unverified HTTPS request is being made to host &#39;zenodo.org&#39;. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
   warnings.warn(
-/home/runner/work/moabb/moabb/.venv/lib/python3.9/site-packages/urllib3/connectionpool.py:1061: InsecureRequestWarning: Unverified HTTPS request is being made to host &#39;zenodo.org&#39;. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+/home/runner/work/moabb/moabb/.venv/lib/python3.9/site-packages/urllib3/connectionpool.py:1064: InsecureRequestWarning: Unverified HTTPS request is being made to host &#39;zenodo.org&#39;. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
   warnings.warn(
 
   0%|                                              | 0.00/2.82M [00:00&lt;?, ?B/s]
-  0%|▏                                    | 12.3k/2.82M [00:00&lt;00:36, 76.0kB/s]
-  1%|▌                                     | 39.9k/2.82M [00:00&lt;00:21, 132kB/s]
-  3%|█▎                                    | 97.3k/2.82M [00:00&lt;00:11, 233kB/s]
-  7%|██▋                                    | 197k/2.82M [00:00&lt;00:06, 383kB/s]
- 15%|█████▉                                 | 427k/2.82M [00:00&lt;00:03, 755kB/s]
- 31%|███████████▉                          | 885k/2.82M [00:00&lt;00:01, 1.46MB/s]
- 64%|███████████████████████▋             | 1.80M/2.82M [00:01&lt;00:00, 2.82MB/s]
+  0%|▏                                    | 12.3k/2.82M [00:00&lt;00:30, 91.5kB/s]
+  1%|▌                                     | 39.9k/2.82M [00:00&lt;00:14, 186kB/s]
+  7%|██▊                                    | 202k/2.82M [00:00&lt;00:04, 573kB/s]
+ 26%|█████████▉                            | 734k/2.82M [00:00&lt;00:01, 2.02MB/s]
+ 56%|████████████████████▋                | 1.57M/2.82M [00:00&lt;00:00, 3.94MB/s]
   0%|                                              | 0.00/2.82M [00:00&lt;?, ?B/s]
-100%|█████████████████████████████████████| 2.82M/2.82M [00:00&lt;00:00, 16.1GB/s]
-/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:273: UserWarning: warnEpochs &lt;Epochs |  24 events (all good), 2 – 4 s, baseline off, ~784 kB, data loaded,
+100%|█████████████████████████████████████| 2.82M/2.82M [00:00&lt;00:00, 11.0GB/s]
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 4 s (baseline off), ~785 kB, data loaded,
  &#39;13&#39;: 8
  &#39;17&#39;: 8
  &#39;21&#39;: 8&gt;
   warn(f&quot;warnEpochs {epochs}&quot;)
-/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:273: UserWarning: warnEpochs &lt;Epochs |  24 events (all good), 2 – 4 s, baseline off, ~784 kB, data loaded,
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 4 s (baseline off), ~785 kB, data loaded,
  &#39;13&#39;: 8
  &#39;17&#39;: 8
  &#39;21&#39;: 8&gt;
   warn(f&quot;warnEpochs {epochs}&quot;)
-/home/runner/work/moabb/moabb/.venv/lib/python3.9/site-packages/urllib3/connectionpool.py:1061: InsecureRequestWarning: Unverified HTTPS request is being made to host &#39;zenodo.org&#39;. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+/home/runner/work/moabb/moabb/.venv/lib/python3.9/site-packages/urllib3/connectionpool.py:1064: InsecureRequestWarning: Unverified HTTPS request is being made to host &#39;zenodo.org&#39;. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
   warnings.warn(
-/home/runner/work/moabb/moabb/.venv/lib/python3.9/site-packages/urllib3/connectionpool.py:1061: InsecureRequestWarning: Unverified HTTPS request is being made to host &#39;zenodo.org&#39;. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+/home/runner/work/moabb/moabb/.venv/lib/python3.9/site-packages/urllib3/connectionpool.py:1064: InsecureRequestWarning: Unverified HTTPS request is being made to host &#39;zenodo.org&#39;. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
   warnings.warn(
 
   0%|                                              | 0.00/2.58M [00:00&lt;?, ?B/s]
-  0%|▏                                    | 12.3k/2.58M [00:00&lt;00:33, 76.2kB/s]
-  2%|▌                                     | 41.0k/2.58M [00:00&lt;00:18, 135kB/s]
-  3%|█▏                                    | 85.0k/2.58M [00:00&lt;00:12, 198kB/s]
-  7%|██▊                                    | 188k/2.58M [00:00&lt;00:06, 370kB/s]
- 15%|█████▊                                 | 388k/2.58M [00:00&lt;00:03, 680kB/s]
- 31%|███████████▌                          | 790k/2.58M [00:00&lt;00:01, 1.29MB/s]
- 63%|███████████████████████▎             | 1.62M/2.58M [00:01&lt;00:00, 2.55MB/s]
+  0%|▏                                     | 12.3k/2.58M [00:00&lt;00:23, 108kB/s]
+  4%|█▌                                     | 100k/2.58M [00:00&lt;00:04, 536kB/s]
+  7%|██▌                                    | 173k/2.58M [00:00&lt;00:05, 446kB/s]
+ 26%|█████████▊                            | 669k/2.58M [00:00&lt;00:01, 1.44MB/s]
+ 63%|███████████████████████▏             | 1.62M/2.58M [00:00&lt;00:00, 3.51MB/s]
   0%|                                              | 0.00/2.58M [00:00&lt;?, ?B/s]
-100%|█████████████████████████████████████| 2.58M/2.58M [00:00&lt;00:00, 13.7GB/s]
-/home/runner/work/moabb/moabb/.venv/lib/python3.9/site-packages/urllib3/connectionpool.py:1061: InsecureRequestWarning: Unverified HTTPS request is being made to host &#39;zenodo.org&#39;. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+100%|█████████████████████████████████████| 2.58M/2.58M [00:00&lt;00:00, 14.3GB/s]
+/home/runner/work/moabb/moabb/.venv/lib/python3.9/site-packages/urllib3/connectionpool.py:1064: InsecureRequestWarning: Unverified HTTPS request is being made to host &#39;zenodo.org&#39;. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
   warnings.warn(
-/home/runner/work/moabb/moabb/.venv/lib/python3.9/site-packages/urllib3/connectionpool.py:1061: InsecureRequestWarning: Unverified HTTPS request is being made to host &#39;zenodo.org&#39;. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
+/home/runner/work/moabb/moabb/.venv/lib/python3.9/site-packages/urllib3/connectionpool.py:1064: InsecureRequestWarning: Unverified HTTPS request is being made to host &#39;zenodo.org&#39;. Adding certificate verification is strongly advised. See: https://urllib3.readthedocs.io/en/1.26.x/advanced-usage.html#ssl-warnings
   warnings.warn(
 
   0%|                                              | 0.00/2.14M [00:00&lt;?, ?B/s]
-  1%|▎                                    | 15.4k/2.14M [00:00&lt;00:22, 95.1kB/s]
-  2%|▊                                     | 45.1k/2.14M [00:00&lt;00:14, 147kB/s]
-  5%|██                                     | 114k/2.14M [00:00&lt;00:07, 273kB/s]
- 12%|████▌                                  | 253k/2.14M [00:00&lt;00:03, 504kB/s]
- 24%|█████████▍                             | 516k/2.14M [00:00&lt;00:01, 905kB/s]
- 50%|██████████████████▌                  | 1.07M/2.14M [00:00&lt;00:00, 1.73MB/s]
+  1%|▏                                     | 12.3k/2.14M [00:00&lt;00:19, 111kB/s]
+  5%|██                                     | 114k/2.14M [00:00&lt;00:04, 411kB/s]
+ 25%|█████████▎                            | 528k/2.14M [00:00&lt;00:01, 1.30MB/s]
+ 64%|███████████████████████▌             | 1.37M/2.14M [00:00&lt;00:00, 3.24MB/s]
   0%|                                              | 0.00/2.14M [00:00&lt;?, ?B/s]
-100%|█████████████████████████████████████| 2.14M/2.14M [00:00&lt;00:00, 12.0GB/s]
-/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:273: UserWarning: warnEpochs &lt;Epochs |  24 events (all good), 2 – 4 s, baseline off, ~784 kB, data loaded,
+100%|█████████████████████████████████████| 2.14M/2.14M [00:00&lt;00:00, 7.99GB/s]
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 4 s (baseline off), ~785 kB, data loaded,
  &#39;13&#39;: 8
  &#39;17&#39;: 8
  &#39;21&#39;: 8&gt;
   warn(f&quot;warnEpochs {epochs}&quot;)
-/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:273: UserWarning: warnEpochs &lt;Epochs |  24 events (all good), 2 – 4 s, baseline off, ~784 kB, data loaded,
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 4 s (baseline off), ~785 kB, data loaded,
  &#39;13&#39;: 8
  &#39;17&#39;: 8
  &#39;21&#39;: 8&gt;
   warn(f&quot;warnEpochs {epochs}&quot;)
 
 Kalunga2016-CrossSubject:   0%|          | 0/2 [00:00&lt;?, ?it/s]
-Kalunga2016-CrossSubject:  50%|#####     | 1/2 [00:00&lt;00:00,  2.11it/s]
-Kalunga2016-CrossSubject: 100%|##########| 2/2 [00:00&lt;00:00,  2.10it/s]
-Kalunga2016-CrossSubject: 100%|##########| 2/2 [00:00&lt;00:00,  2.10it/s]
+Kalunga2016-CrossSubject:  50%|#####     | 1/2 [00:00&lt;00:00,  2.01it/s]
+Kalunga2016-CrossSubject: 100%|##########| 2/2 [00:00&lt;00:00,  2.03it/s]
+Kalunga2016-CrossSubject: 100%|##########| 2/2 [00:00&lt;00:00,  2.02it/s]
 </pre></div>
 </div>
 <p>Filter bank processing, determine the filter automatically from the
@@ -814,71 +851,71 @@ stimulation frequency values of events.</p>
 <span class="n">results_fb</span> <span class="o">=</span> <a href="../generated/moabb.evaluations.base.BaseEvaluation.html#moabb.evaluations.base.BaseEvaluation.process" title="moabb.evaluations.base.BaseEvaluation.process" class="sphx-glr-backref-module-moabb-evaluations-base sphx-glr-backref-type-py-method"><span class="n">evaluation_fb</span><span class="o">.</span><span class="n">process</span></a><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">pipelines_fb</span></a><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:273: UserWarning: warnEpochs &lt;Epochs |  24 events (all good), 2 – 4 s, baseline off, ~784 kB, data loaded,
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 4 s (baseline off), ~785 kB, data loaded,
  &#39;13&#39;: 8
  &#39;17&#39;: 8
  &#39;21&#39;: 8&gt;
   warn(f&quot;warnEpochs {epochs}&quot;)
-/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:273: UserWarning: warnEpochs &lt;Epochs |  24 events (all good), 2 – 4 s, baseline off, ~784 kB, data loaded,
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 4 s (baseline off), ~785 kB, data loaded,
  &#39;13&#39;: 8
  &#39;17&#39;: 8
  &#39;21&#39;: 8&gt;
   warn(f&quot;warnEpochs {epochs}&quot;)
-/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:273: UserWarning: warnEpochs &lt;Epochs |  24 events (all good), 2 – 4 s, baseline off, ~784 kB, data loaded,
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 4 s (baseline off), ~785 kB, data loaded,
  &#39;13&#39;: 8
  &#39;17&#39;: 8
  &#39;21&#39;: 8&gt;
   warn(f&quot;warnEpochs {epochs}&quot;)
-/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:273: UserWarning: warnEpochs &lt;Epochs |  24 events (all good), 2 – 4 s, baseline off, ~784 kB, data loaded,
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 4 s (baseline off), ~785 kB, data loaded,
  &#39;13&#39;: 8
  &#39;17&#39;: 8
  &#39;21&#39;: 8&gt;
   warn(f&quot;warnEpochs {epochs}&quot;)
-/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:273: UserWarning: warnEpochs &lt;Epochs |  24 events (all good), 2 – 4 s, baseline off, ~784 kB, data loaded,
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 4 s (baseline off), ~785 kB, data loaded,
  &#39;13&#39;: 8
  &#39;17&#39;: 8
  &#39;21&#39;: 8&gt;
   warn(f&quot;warnEpochs {epochs}&quot;)
-/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:273: UserWarning: warnEpochs &lt;Epochs |  24 events (all good), 2 – 4 s, baseline off, ~784 kB, data loaded,
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 4 s (baseline off), ~785 kB, data loaded,
  &#39;13&#39;: 8
  &#39;17&#39;: 8
  &#39;21&#39;: 8&gt;
   warn(f&quot;warnEpochs {epochs}&quot;)
-/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:273: UserWarning: warnEpochs &lt;Epochs |  24 events (all good), 2 – 4 s, baseline off, ~784 kB, data loaded,
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 4 s (baseline off), ~785 kB, data loaded,
  &#39;13&#39;: 8
  &#39;17&#39;: 8
  &#39;21&#39;: 8&gt;
   warn(f&quot;warnEpochs {epochs}&quot;)
-/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:273: UserWarning: warnEpochs &lt;Epochs |  24 events (all good), 2 – 4 s, baseline off, ~784 kB, data loaded,
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 4 s (baseline off), ~785 kB, data loaded,
  &#39;13&#39;: 8
  &#39;17&#39;: 8
  &#39;21&#39;: 8&gt;
   warn(f&quot;warnEpochs {epochs}&quot;)
-/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:273: UserWarning: warnEpochs &lt;Epochs |  24 events (all good), 2 – 4 s, baseline off, ~784 kB, data loaded,
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 4 s (baseline off), ~785 kB, data loaded,
  &#39;13&#39;: 8
  &#39;17&#39;: 8
  &#39;21&#39;: 8&gt;
   warn(f&quot;warnEpochs {epochs}&quot;)
-/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:273: UserWarning: warnEpochs &lt;Epochs |  24 events (all good), 2 – 4 s, baseline off, ~784 kB, data loaded,
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 4 s (baseline off), ~785 kB, data loaded,
  &#39;13&#39;: 8
  &#39;17&#39;: 8
  &#39;21&#39;: 8&gt;
   warn(f&quot;warnEpochs {epochs}&quot;)
-/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:273: UserWarning: warnEpochs &lt;Epochs |  24 events (all good), 2 – 4 s, baseline off, ~784 kB, data loaded,
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 4 s (baseline off), ~785 kB, data loaded,
  &#39;13&#39;: 8
  &#39;17&#39;: 8
  &#39;21&#39;: 8&gt;
   warn(f&quot;warnEpochs {epochs}&quot;)
-/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:273: UserWarning: warnEpochs &lt;Epochs |  24 events (all good), 2 – 4 s, baseline off, ~784 kB, data loaded,
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 4 s (baseline off), ~785 kB, data loaded,
  &#39;13&#39;: 8
  &#39;17&#39;: 8
  &#39;21&#39;: 8&gt;
   warn(f&quot;warnEpochs {epochs}&quot;)
 
 Kalunga2016-CrossSubject:   0%|          | 0/2 [00:00&lt;?, ?it/s]
-Kalunga2016-CrossSubject:  50%|#####     | 1/2 [00:00&lt;00:00,  2.26it/s]
-Kalunga2016-CrossSubject: 100%|##########| 2/2 [00:00&lt;00:00,  2.27it/s]
-Kalunga2016-CrossSubject: 100%|##########| 2/2 [00:00&lt;00:00,  2.26it/s]
+Kalunga2016-CrossSubject:  50%|#####     | 1/2 [00:00&lt;00:00,  2.64it/s]
+Kalunga2016-CrossSubject: 100%|##########| 2/2 [00:00&lt;00:00,  2.64it/s]
+Kalunga2016-CrossSubject: 100%|##########| 2/2 [00:00&lt;00:00,  2.64it/s]
 </pre></div>
 </div>
 <p>TRCA processing also relies on filter bank that is automatically designed.</p>
@@ -888,31 +925,31 @@ Kalunga2016-CrossSubject: 100%|##########| 2/2 [00:00&lt;00:00,  2.26it/s]
 <span class="n">results_TRCA</span> <span class="o">=</span> <a href="../generated/moabb.evaluations.base.BaseEvaluation.html#moabb.evaluations.base.BaseEvaluation.process" title="moabb.evaluations.base.BaseEvaluation.process" class="sphx-glr-backref-module-moabb-evaluations-base sphx-glr-backref-type-py-method"><span class="n">evaluation_TRCA</span><span class="o">.</span><span class="n">process</span></a><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">pipelines_TRCA</span></a><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:273: UserWarning: warnEpochs &lt;Epochs |  24 events (all good), 2 – 4 s, baseline off, ~784 kB, data loaded,
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 4 s (baseline off), ~785 kB, data loaded,
  &#39;13&#39;: 8
  &#39;17&#39;: 8
  &#39;21&#39;: 8&gt;
   warn(f&quot;warnEpochs {epochs}&quot;)
-/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:273: UserWarning: warnEpochs &lt;Epochs |  24 events (all good), 2 – 4 s, baseline off, ~784 kB, data loaded,
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 4 s (baseline off), ~785 kB, data loaded,
  &#39;13&#39;: 8
  &#39;17&#39;: 8
  &#39;21&#39;: 8&gt;
   warn(f&quot;warnEpochs {epochs}&quot;)
-/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:273: UserWarning: warnEpochs &lt;Epochs |  24 events (all good), 2 – 4 s, baseline off, ~784 kB, data loaded,
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 4 s (baseline off), ~785 kB, data loaded,
  &#39;13&#39;: 8
  &#39;17&#39;: 8
  &#39;21&#39;: 8&gt;
   warn(f&quot;warnEpochs {epochs}&quot;)
-/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:273: UserWarning: warnEpochs &lt;Epochs |  24 events (all good), 2 – 4 s, baseline off, ~784 kB, data loaded,
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 4 s (baseline off), ~785 kB, data loaded,
  &#39;13&#39;: 8
  &#39;17&#39;: 8
  &#39;21&#39;: 8&gt;
   warn(f&quot;warnEpochs {epochs}&quot;)
 
 Kalunga2016-CrossSubject:   0%|          | 0/2 [00:00&lt;?, ?it/s]
-Kalunga2016-CrossSubject:  50%|#####     | 1/2 [00:00&lt;00:00,  1.20it/s]
-Kalunga2016-CrossSubject: 100%|##########| 2/2 [00:01&lt;00:00,  1.20it/s]
-Kalunga2016-CrossSubject: 100%|##########| 2/2 [00:01&lt;00:00,  1.20it/s]
+Kalunga2016-CrossSubject:  50%|#####     | 1/2 [00:00&lt;00:00,  1.30it/s]
+Kalunga2016-CrossSubject: 100%|##########| 2/2 [00:01&lt;00:00,  1.33it/s]
+Kalunga2016-CrossSubject: 100%|##########| 2/2 [00:01&lt;00:00,  1.33it/s]
 </pre></div>
 </div>
 <p>MsetCCA processing</p>
@@ -922,31 +959,31 @@ Kalunga2016-CrossSubject: 100%|##########| 2/2 [00:01&lt;00:00,  1.20it/s]
 <span class="n">results_MSET_CCA</span> <span class="o">=</span> <a href="../generated/moabb.evaluations.base.BaseEvaluation.html#moabb.evaluations.base.BaseEvaluation.process" title="moabb.evaluations.base.BaseEvaluation.process" class="sphx-glr-backref-module-moabb-evaluations-base sphx-glr-backref-type-py-method"><span class="n">evaluation_MSET_CCA</span><span class="o">.</span><span class="n">process</span></a><span class="p">(</span><a href="https://docs.python.org/3/library/stdtypes.html#dict" title="builtins.dict" class="sphx-glr-backref-module-builtins sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">pipelines_MSET_CCA</span></a><span class="p">)</span>
 </pre></div>
 </div>
-<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:273: UserWarning: warnEpochs &lt;Epochs |  24 events (all good), 2 – 4 s, baseline off, ~784 kB, data loaded,
+<div class="sphx-glr-script-out highlight-none notranslate"><div class="highlight"><pre><span></span>/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 4 s (baseline off), ~785 kB, data loaded,
  &#39;13&#39;: 8
  &#39;17&#39;: 8
  &#39;21&#39;: 8&gt;
   warn(f&quot;warnEpochs {epochs}&quot;)
-/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:273: UserWarning: warnEpochs &lt;Epochs |  24 events (all good), 2 – 4 s, baseline off, ~784 kB, data loaded,
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 4 s (baseline off), ~785 kB, data loaded,
  &#39;13&#39;: 8
  &#39;17&#39;: 8
  &#39;21&#39;: 8&gt;
   warn(f&quot;warnEpochs {epochs}&quot;)
-/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:273: UserWarning: warnEpochs &lt;Epochs |  24 events (all good), 2 – 4 s, baseline off, ~784 kB, data loaded,
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 4 s (baseline off), ~785 kB, data loaded,
  &#39;13&#39;: 8
  &#39;17&#39;: 8
  &#39;21&#39;: 8&gt;
   warn(f&quot;warnEpochs {epochs}&quot;)
-/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:273: UserWarning: warnEpochs &lt;Epochs |  24 events (all good), 2 – 4 s, baseline off, ~784 kB, data loaded,
+/home/runner/work/moabb/moabb/moabb/datasets/preprocessing.py:279: UserWarning: warnEpochs &lt;Epochs | 24 events (all good), 2 – 4 s (baseline off), ~785 kB, data loaded,
  &#39;13&#39;: 8
  &#39;17&#39;: 8
  &#39;21&#39;: 8&gt;
   warn(f&quot;warnEpochs {epochs}&quot;)
 
 Kalunga2016-CrossSubject:   0%|          | 0/2 [00:00&lt;?, ?it/s]
-Kalunga2016-CrossSubject:  50%|#####     | 1/2 [00:00&lt;00:00,  1.56it/s]
-Kalunga2016-CrossSubject: 100%|##########| 2/2 [00:01&lt;00:00,  1.55it/s]
-Kalunga2016-CrossSubject: 100%|##########| 2/2 [00:01&lt;00:00,  1.55it/s]
+Kalunga2016-CrossSubject:  50%|#####     | 1/2 [00:00&lt;00:00,  1.45it/s]
+Kalunga2016-CrossSubject: 100%|##########| 2/2 [00:01&lt;00:00,  1.45it/s]
+Kalunga2016-CrossSubject: 100%|##########| 2/2 [00:01&lt;00:00,  1.45it/s]
 </pre></div>
 </div>
 <p>After processing the four, we simply concatenate the results.</p>
@@ -957,7 +994,7 @@ Kalunga2016-CrossSubject: 100%|##########| 2/2 [00:01&lt;00:00,  1.55it/s]
 <section id="plot-results">
 <h2>Plot Results<a class="headerlink" href="#plot-results" title="Permalink to this heading">#</a></h2>
 <p>Here we display the results as stripplot, with a pointplot for error bar.</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://matplotlib.org/stable/api/figure_api.html#matplotlib.figure.Figure" title="matplotlib.figure.Figure" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">fig</span></a><span class="p">,</span> <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="matplotlib.axes.Axes" class="sphx-glr-backref-module-matplotlib-axes sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ax</span></a> <span class="o">=</span> <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.subplots.html#matplotlib.pyplot.subplots" title="matplotlib.pyplot.subplots" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span></a><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.figure.Figure.html#matplotlib.figure.Figure" title="matplotlib.figure.Figure" class="sphx-glr-backref-module-matplotlib-figure sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">fig</span></a><span class="p">,</span> <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.axes.Axes.html#matplotlib.axes.Axes" title="matplotlib.axes.Axes" class="sphx-glr-backref-module-matplotlib-axes sphx-glr-backref-type-py-class sphx-glr-backref-instance"><span class="n">ax</span></a> <span class="o">=</span> <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.subplots.html#matplotlib.pyplot.subplots" title="matplotlib.pyplot.subplots" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">subplots</span></a><span class="p">(</span><span class="n">facecolor</span><span class="o">=</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">stripplot</span><span class="p">(</span>
     <span class="n">data</span><span class="o">=</span><span class="n">results</span><span class="p">,</span>
     <span class="n">y</span><span class="o">=</span><span class="s2">&quot;score&quot;</span><span class="p">,</span>
@@ -974,8 +1011,8 @@ Kalunga2016-CrossSubject: 100%|##########| 2/2 [00:01&lt;00:00,  1.55it/s]
 <a href="https://matplotlib.org/stable/api/_as_gen/matplotlib.pyplot.show.html#matplotlib.pyplot.show" title="matplotlib.pyplot.show" class="sphx-glr-backref-module-matplotlib-pyplot sphx-glr-backref-type-py-function"><span class="n">plt</span><span class="o">.</span><span class="n">show</span></a><span class="p">()</span>
 </pre></div>
 </div>
-<img src="../_images/sphx_glr_plot_cross_subject_ssvep_001.png" srcset="../_images/sphx_glr_plot_cross_subject_ssvep_001.png" alt="plot cross subject ssvep" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  18.701 seconds)</p>
-<p><strong>Estimated memory usage:</strong>  21 MB</p>
+<img src="../_images/sphx_glr_plot_cross_subject_ssvep_001.png" srcset="../_images/sphx_glr_plot_cross_subject_ssvep_001.png" alt="plot cross subject ssvep" class = "sphx-glr-single-img"/><p class="sphx-glr-timing"><strong>Total running time of the script:</strong> ( 0 minutes  19.528 seconds)</p>
+<p><strong>Estimated memory usage:</strong>  14 MB</p>
 <div class="sphx-glr-footer sphx-glr-footer-example docutils container" id="sphx-glr-download-auto-examples-plot-cross-subject-ssvep-py">
 <div class="sphx-glr-download sphx-glr-download-python docutils container">
 <p><a class="reference download internal" download="" href="../_downloads/5459b5c2be76a529eb282ae496a50415/plot_cross_subject_ssvep.py"><code class="xref download docutils literal notranslate"><span class="pre">Download</span> <span class="pre">Python</span> <span class="pre">source</span> <span class="pre">code:</span> <span class="pre">plot_cross_subject_ssvep.py</span></code></a></p>
@@ -1067,7 +1104,7 @@ Kalunga2016-CrossSubject: 100%|##########| 2/2 [00:01&lt;00:00,  1.55it/s]
         <div class="footer-item">
   <p class="copyright">
     
-      © Copyright 2018-2023 MOABB contributors.
+      © Copyright 2018-2024 MOABB contributors.
       <br/>
     
   </p>

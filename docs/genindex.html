@@ -8,7 +8,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Index &#8212; moabb 1.0.0 documentation</title>
+    <title>Index &#8212; moabb 1.1.1-dev documentation</title>
   
   
   
@@ -29,12 +29,14 @@
 <link rel="preload" as="font" type="font/woff2" crossorigin href="_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
 
     <link rel="stylesheet" type="text/css" href="_static/pygments.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
     <link rel="stylesheet" type="text/css" href="_static/sg_gallery.css" />
     <link rel="stylesheet" type="text/css" href="_static/sg_gallery-binder.css" />
     <link rel="stylesheet" type="text/css" href="_static/sg_gallery-dataframe.css" />
     <link rel="stylesheet" type="text/css" href="_static/sg_gallery-rendered-html.css" />
-    <link rel="stylesheet" type="text/css" href="_static/style.css" />
+    <link rel="stylesheet" type="text/css" href="_static/css/custom.css" />
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/dt/dt-2.0.4/b-3.0.2/b-html5-3.0.2/datatables.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
   <link rel="preload" as="script" href="_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
@@ -46,6 +48,8 @@
     <script src="_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="_static/doctools.js"></script>
     <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
     <script src="_static/design-tabs.js"></script>
     <script async="async" src="https://www.googletagmanager.com/gtag/js?id=G-5WJBKDMSTE"></script>
     <script>
@@ -55,6 +59,8 @@
                 gtag('config', 'G-5WJBKDMSTE');
             </script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'genindex';</script>
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+    <script src="https://cdn.datatables.net/v/dt/dt-2.0.4/b-3.0.2/b-html5-3.0.2/datatables.min.js"></script>
     <link rel="index" title="Index" href="#" />
     <link rel="search" title="Search" href="search.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
@@ -100,6 +106,21 @@
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+
+<script>
+document.write(`<div class="bd-header-announcement"></div>`);
+fetch("https://raw.githubusercontent.com/NeuroTechX/moabb/develop/docs/source/_templates/custom-template.html")
+  .then(res => {return res.text();})
+  .then(data => {
+    div = document.querySelector(".bd-header-announcement");
+    div.classList.add(...["bd-header-announcement", "container-fluid"]);
+    div.innerHTML = `<div class="bd-header-announcement__content">${data}</div>`;
+  })
+  .catch(error => {
+    console.log("[PST]: Failed to load announcement at: https://raw.githubusercontent.com/NeuroTechX/moabb/develop/docs/source/_templates/custom-template.html");
+  });
+</script>
   
     <nav class="bd-header navbar navbar-expand-lg bd-navbar">
 <div class="bd-header__inner bd-page-width">
@@ -143,6 +164,20 @@
   <ul class="bd-navbar-elements navbar-nav">
     
                     <li class="nav-item">
+                      <a class="nav-link nav-internal" href="paper_results.html">
+                        The largest EEG benchmark
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="dataset_summary.html">
+                        Datasets
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
                       <a class="nav-link nav-internal" href="install/install.html">
                         Install
                       </a>
@@ -162,10 +197,15 @@
                       </a>
                     </li>
                 
-
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
                     <li class="nav-item">
-                      <a class="nav-link nav-internal" href="dataset_summary.html">
-                        Datasets
+                      <a class="nav-link nav-internal" href="auto_examples/index.html">
+                        Gallery
                       </a>
                     </li>
                 
@@ -176,29 +216,17 @@
                       </a>
                     </li>
                 
-            <div class="nav-item dropdown">
-                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    More
-                </button>
-                <div class="dropdown-menu">
-                    
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="api.html">
-                        API
-                      </a>
-                    </li>
-                
 
                     <li class="nav-item">
-                      <a class="nav-link nav-internal" href="auto_examples/index.html">
-                        Gallery
+                      <a class="nav-link nav-internal" href="api.html">
+                        API reference
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="whats_new.html">
-                        What's new
+                        Release notes
                       </a>
                     </li>
                 
@@ -279,6 +307,20 @@ document.write(`
   <ul class="bd-navbar-elements navbar-nav">
     
                     <li class="nav-item">
+                      <a class="nav-link nav-internal" href="paper_results.html">
+                        The largest EEG benchmark
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
+                      <a class="nav-link nav-internal" href="dataset_summary.html">
+                        Datasets
+                      </a>
+                    </li>
+                
+
+                    <li class="nav-item">
                       <a class="nav-link nav-internal" href="install/install.html">
                         Install
                       </a>
@@ -298,10 +340,15 @@ document.write(`
                       </a>
                     </li>
                 
-
+            <div class="nav-item dropdown">
+                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    More
+                </button>
+                <div class="dropdown-menu">
+                    
                     <li class="nav-item">
-                      <a class="nav-link nav-internal" href="dataset_summary.html">
-                        Datasets
+                      <a class="nav-link nav-internal" href="auto_examples/index.html">
+                        Gallery
                       </a>
                     </li>
                 
@@ -312,29 +359,17 @@ document.write(`
                       </a>
                     </li>
                 
-            <div class="nav-item dropdown">
-                <button class="btn dropdown-toggle nav-item" type="button" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    More
-                </button>
-                <div class="dropdown-menu">
-                    
-                    <li class="nav-item">
-                      <a class="nav-link nav-internal" href="api.html">
-                        API
-                      </a>
-                    </li>
-                
 
                     <li class="nav-item">
-                      <a class="nav-link nav-internal" href="auto_examples/index.html">
-                        Gallery
+                      <a class="nav-link nav-internal" href="api.html">
+                        API reference
                       </a>
                     </li>
                 
 
                     <li class="nav-item">
                       <a class="nav-link nav-internal" href="whats_new.html">
-                        What's new
+                        Release notes
                       </a>
                     </li>
                 
@@ -507,6 +542,14 @@ document.write(`
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="generated/moabb.datasets.base.CacheConfig.html#moabb.datasets.base.CacheConfig">CacheConfig (class in moabb.datasets.base)</a>
 </li>
+      <li><a href="generated/moabb.datasets.CastillosBurstVEP100.html#moabb.datasets.CastillosBurstVEP100">CastillosBurstVEP100 (class in moabb.datasets)</a>
+</li>
+      <li><a href="generated/moabb.datasets.CastillosBurstVEP40.html#moabb.datasets.CastillosBurstVEP40">CastillosBurstVEP40 (class in moabb.datasets)</a>
+</li>
+      <li><a href="generated/moabb.datasets.CastillosCVEP100.html#moabb.datasets.CastillosCVEP100">CastillosCVEP100 (class in moabb.datasets)</a>
+</li>
+      <li><a href="generated/moabb.datasets.CastillosCVEP40.html#moabb.datasets.CastillosCVEP40">CastillosCVEP40 (class in moabb.datasets)</a>
+</li>
       <li><a href="generated/moabb.datasets.Cattan2019_PHMD.html#moabb.datasets.Cattan2019_PHMD">Cattan2019_PHMD (class in moabb.datasets)</a>
 </li>
       <li><a href="generated/moabb.datasets.Cattan2019_VR.html#moabb.datasets.Cattan2019_VR">Cattan2019_VR (class in moabb.datasets)</a>
@@ -515,17 +558,19 @@ document.write(`
 </li>
       <li><a href="generated/moabb.datasets.Cho2017.html#moabb.datasets.Cho2017">Cho2017 (class in moabb.datasets)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="generated/moabb.pipelines.classification.SSVEP_TRCA.html#moabb.pipelines.classification.SSVEP_TRCA.classes_">classes_ (moabb.pipelines.classification.SSVEP_TRCA attribute)</a>
 </li>
       <li><a href="generated/moabb.analysis.meta_analysis.collapse_session_scores.html#moabb.analysis.meta_analysis.collapse_session_scores">collapse_session_scores() (in module moabb.analysis.meta_analysis)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="generated/moabb.analysis.meta_analysis.combine_effects.html#moabb.analysis.meta_analysis.combine_effects">combine_effects() (in module moabb.analysis.meta_analysis)</a>
 </li>
       <li><a href="generated/moabb.analysis.meta_analysis.combine_pvalues.html#moabb.analysis.meta_analysis.combine_pvalues">combine_pvalues() (in module moabb.analysis.meta_analysis)</a>
 </li>
       <li><a href="generated/moabb.analysis.meta_analysis.compute_dataset_statistics.html#moabb.analysis.meta_analysis.compute_dataset_statistics">compute_dataset_statistics() (in module moabb.analysis.meta_analysis)</a>
+</li>
+      <li><a href="generated/moabb.datasets.Liu2024.html#moabb.datasets.Liu2024.create_event_array">create_event_array() (moabb.datasets.Liu2024 static method)</a>
 </li>
       <li><a href="generated/moabb.pipelines.utils.create_pipeline_from_config.html#moabb.pipelines.utils.create_pipeline_from_config">create_pipeline_from_config() (in module moabb.pipelines.utils)</a>
 </li>
@@ -542,6 +587,8 @@ document.write(`
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="generated/moabb.datasets.download.data_dl.html#moabb.datasets.download.data_dl">data_dl() (in module moabb.datasets.download)</a>
+</li>
+      <li><a href="generated/moabb.datasets.Liu2024.html#moabb.datasets.Liu2024.data_infos">data_infos() (moabb.datasets.Liu2024 method)</a>
 </li>
       <li><a href="generated/moabb.datasets.download.data_path.html#moabb.datasets.download.data_path">data_path() (in module moabb.datasets.download)</a>
 
@@ -576,7 +623,11 @@ document.write(`
 </li>
         <li><a href="generated/moabb.datasets.GrosseWentrup2009.html#moabb.datasets.GrosseWentrup2009.data_path">(moabb.datasets.GrosseWentrup2009 method)</a>
 </li>
+        <li><a href="generated/moabb.datasets.Hinss2021.html#moabb.datasets.Hinss2021.data_path">(moabb.datasets.Hinss2021 method)</a>
+</li>
         <li><a href="generated/moabb.datasets.Kalunga2016.html#moabb.datasets.Kalunga2016.data_path">(moabb.datasets.Kalunga2016 method)</a>
+</li>
+        <li><a href="generated/moabb.datasets.Liu2024.html#moabb.datasets.Liu2024.data_path">(moabb.datasets.Liu2024 method)</a>
 </li>
         <li><a href="generated/moabb.datasets.Nakanishi2015.html#moabb.datasets.Nakanishi2015.data_path">(moabb.datasets.Nakanishi2015 method)</a>
 </li>
@@ -584,9 +635,15 @@ document.write(`
 </li>
         <li><a href="generated/moabb.datasets.PhysionetMI.html#moabb.datasets.PhysionetMI.data_path">(moabb.datasets.PhysionetMI method)</a>
 </li>
+        <li><a href="generated/moabb.datasets.Rodrigues2017.html#moabb.datasets.Rodrigues2017.data_path">(moabb.datasets.Rodrigues2017 method)</a>
+</li>
         <li><a href="generated/moabb.datasets.Schirrmeister2017.html#moabb.datasets.Schirrmeister2017.data_path">(moabb.datasets.Schirrmeister2017 method)</a>
 </li>
         <li><a href="generated/moabb.datasets.Sosulski2019.html#moabb.datasets.Sosulski2019.data_path">(moabb.datasets.Sosulski2019 method)</a>
+</li>
+        <li><a href="generated/moabb.datasets.Stieger2021.html#moabb.datasets.Stieger2021.data_path">(moabb.datasets.Stieger2021 method)</a>
+</li>
+        <li><a href="generated/moabb.datasets.Thielen2015.html#moabb.datasets.Thielen2015.data_path">(moabb.datasets.Thielen2015 method)</a>
 </li>
         <li><a href="generated/moabb.datasets.Thielen2021.html#moabb.datasets.Thielen2021.data_path">(moabb.datasets.Thielen2021 method)</a>
 </li>
@@ -631,8 +688,12 @@ document.write(`
 </li>
       <li><a href="generated/moabb.pipelines.utils_deep_model.EEGNet_TC.html#moabb.pipelines.utils_deep_model.EEGNet_TC">EEGNet_TC() (in module moabb.pipelines.utils_deep_model)</a>
 </li>
+      <li><a href="generated/moabb.datasets.Liu2024.html#moabb.datasets.Liu2024.encoding">encoding() (moabb.datasets.Liu2024 method)</a>
+</li>
       <li><a href="generated/moabb.datasets.EPFLP300.html#moabb.datasets.EPFLP300">EPFLP300 (class in moabb.datasets)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="generated/moabb.evaluations.base.BaseEvaluation.html#moabb.evaluations.base.BaseEvaluation.evaluate">evaluate() (moabb.evaluations.base.BaseEvaluation method)</a>
 
       <ul>
@@ -643,8 +704,6 @@ document.write(`
         <li><a href="generated/moabb.evaluations.WithinSessionEvaluation.html#moabb.evaluations.WithinSessionEvaluation.evaluate">(moabb.evaluations.WithinSessionEvaluation method)</a>
 </li>
       </ul></li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="generated/moabb.pipelines.features.ExtendedSSVEPSignal.html#moabb.pipelines.features.ExtendedSSVEPSignal">ExtendedSSVEPSignal (class in moabb.pipelines.features)</a>
 </li>
   </ul></td>
@@ -737,10 +796,12 @@ document.write(`
 <h2 id="H">H</h2>
 <table style="width: 100%" class="indextable genindextable"><tr>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="generated/moabb.datasets.Huebner2017.html#moabb.datasets.Huebner2017">Huebner2017 (class in moabb.datasets)</a>
+      <li><a href="generated/moabb.datasets.Hinss2021.html#moabb.datasets.Hinss2021">Hinss2021 (class in moabb.datasets)</a>
 </li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
+      <li><a href="generated/moabb.datasets.Huebner2017.html#moabb.datasets.Huebner2017">Huebner2017 (class in moabb.datasets)</a>
+</li>
       <li><a href="generated/moabb.datasets.Huebner2018.html#moabb.datasets.Huebner2018">Huebner2018 (class in moabb.datasets)</a>
 </li>
   </ul></td>
@@ -771,6 +832,8 @@ document.write(`
         <li><a href="generated/moabb.paradigms.MotorImagery.html#moabb.paradigms.MotorImagery.is_valid">(moabb.paradigms.MotorImagery method)</a>
 </li>
         <li><a href="generated/moabb.paradigms.p300.BaseP300.html#moabb.paradigms.p300.BaseP300.is_valid">(moabb.paradigms.p300.BaseP300 method)</a>
+</li>
+        <li><a href="generated/moabb.paradigms.RestingStateToP300Adapter.html#moabb.paradigms.RestingStateToP300Adapter.is_valid">(moabb.paradigms.RestingStateToP300Adapter method)</a>
 </li>
         <li><a href="generated/moabb.paradigms.ssvep.BaseSSVEP.html#moabb.paradigms.ssvep.BaseSSVEP.is_valid">(moabb.paradigms.ssvep.BaseSSVEP method)</a>
 </li>
@@ -807,11 +870,13 @@ document.write(`
 </li>
       <li><a href="generated/moabb.datasets.Lee2019_MI.html#moabb.datasets.Lee2019_MI">Lee2019_MI (class in moabb.datasets)</a>
 </li>
-  </ul></td>
-  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="generated/moabb.datasets.Lee2019_SSVEP.html#moabb.datasets.Lee2019_SSVEP">Lee2019_SSVEP (class in moabb.datasets)</a>
 </li>
+  </ul></td>
+  <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="generated/moabb.paradigms.LeftRightImagery.html#moabb.paradigms.LeftRightImagery">LeftRightImagery (class in moabb.paradigms)</a>
+</li>
+      <li><a href="generated/moabb.datasets.Liu2024.html#moabb.datasets.Liu2024">Liu2024 (class in moabb.datasets)</a>
 </li>
       <li><a href="generated/moabb.pipelines.features.LogVariance.html#moabb.pipelines.features.LogVariance">LogVariance (class in moabb.pipelines.features)</a>
 </li>
@@ -979,9 +1044,13 @@ document.write(`
   <td style="width: 33%; vertical-align: top;"><ul>
       <li><a href="generated/moabb.datasets.DemonsP300.html#moabb.datasets.DemonsP300.read_hdf">read_hdf() (moabb.datasets.DemonsP300 class method)</a>
 </li>
+      <li><a href="generated/moabb.pipelines.classification.SSVEP_TRCA.html#moabb.pipelines.classification.SSVEP_TRCA.Reference">Reference (moabb.pipelines.classification.SSVEP_TRCA attribute)</a>
+</li>
   </ul></td>
   <td style="width: 33%; vertical-align: top;"><ul>
-      <li><a href="generated/moabb.pipelines.classification.SSVEP_TRCA.html#moabb.pipelines.classification.SSVEP_TRCA.Reference">Reference (moabb.pipelines.classification.SSVEP_TRCA attribute)</a>
+      <li><a href="generated/moabb.paradigms.RestingStateToP300Adapter.html#moabb.paradigms.RestingStateToP300Adapter">RestingStateToP300Adapter (class in moabb.paradigms)</a>
+</li>
+      <li><a href="generated/moabb.datasets.Rodrigues2017.html#moabb.datasets.Rodrigues2017">Rodrigues2017 (class in moabb.datasets)</a>
 </li>
   </ul></td>
 </tr></table>
@@ -1009,6 +1078,8 @@ document.write(`
         <li><a href="generated/moabb.paradigms.P300.html#moabb.paradigms.P300.scoring">(moabb.paradigms.P300 property)</a>
 </li>
         <li><a href="generated/moabb.paradigms.p300.BaseP300.html#moabb.paradigms.p300.BaseP300.scoring">(moabb.paradigms.p300.BaseP300 property)</a>
+</li>
+        <li><a href="generated/moabb.paradigms.RestingStateToP300Adapter.html#moabb.paradigms.RestingStateToP300Adapter.scoring">(moabb.paradigms.RestingStateToP300Adapter property)</a>
 </li>
         <li><a href="generated/moabb.paradigms.ssvep.BaseSSVEP.html#moabb.paradigms.ssvep.BaseSSVEP.scoring">(moabb.paradigms.ssvep.BaseSSVEP property)</a>
 </li>
@@ -1095,6 +1166,8 @@ document.write(`
 </li>
       <li><a href="generated/moabb.pipelines.features.StandardScaler_Epoch.html#moabb.pipelines.features.StandardScaler_Epoch">StandardScaler_Epoch (class in moabb.pipelines.features)</a>
 </li>
+      <li><a href="generated/moabb.datasets.Stieger2021.html#moabb.datasets.Stieger2021">Stieger2021 (class in moabb.datasets)</a>
+</li>
       <li><a href="generated/moabb.analysis.plotting.summary_plot.html#moabb.analysis.plotting.summary_plot">summary_plot() (in module moabb.analysis.plotting)</a>
 </li>
   </ul></td>
@@ -1106,6 +1179,8 @@ document.write(`
       <li><a href="generated/moabb.pipelines.utils_deep_model.TCN_block.html#moabb.pipelines.utils_deep_model.TCN_block">TCN_block() (in module moabb.pipelines.utils_deep_model)</a>
 </li>
       <li><a href="generated/moabb.pipelines.classification.SSVEP_TRCA.html#moabb.pipelines.classification.SSVEP_TRCA.templates_">templates_ (moabb.pipelines.classification.SSVEP_TRCA attribute)</a>
+</li>
+      <li><a href="generated/moabb.datasets.Thielen2015.html#moabb.datasets.Thielen2015">Thielen2015 (class in moabb.datasets)</a>
 </li>
       <li><a href="generated/moabb.datasets.Thielen2021.html#moabb.datasets.Thielen2021">Thielen2021 (class in moabb.datasets)</a>
 </li>
@@ -1200,7 +1275,7 @@ document.write(`
         <div class="footer-item">
   <p class="copyright">
     
-      © Copyright 2018-2023 MOABB contributors.
+      © Copyright 2018-2024 MOABB contributors.
       <br/>
     
   </p>
